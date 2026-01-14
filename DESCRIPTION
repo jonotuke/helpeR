@@ -19,7 +19,7 @@ Imports:
     stringr,
     tibble,
     writexl
-URL: https://github.com/jonotuke/helpeR
+URL: https://github.com/jonotuke/helpeR, https://jonotuke.github.io/helpeR/
 BugReports: https://github.com/jonotuke/helpeR/issues
 Suggests: 
     knitr,
