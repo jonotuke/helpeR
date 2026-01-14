@@ -1,0 +1,158 @@
+# Creating ICS files
+
+``` r
+library(helpeR)
+```
+
+These functions are used to create ICS files so can add weeks of
+semester to calendar.
+
+The first is
+
+``` r
+library(lubridate)
+create_event(name = "Test", today())
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-01-14
+#> DTEND;VALUE=DATE:2026-01-15
+#> SUMMARY:Test
+#> END:VEVENT
+```
+
+This creates an all day event with the given name. If you want to export
+this, then you use
+
+``` r
+create_event(name = "Test", today(), file = "test.ics")
+```
+
+Next, we can create a tibble of dates and weeks for a semester.
+
+``` r
+sem <- create_semester(today(), weeks = 12, MSB = 8)
+sem
+#> # A tibble: 14 × 2
+#>    name    date      
+#>    <chr>   <date>    
+#>  1 Week 1  2026-01-14
+#>  2 Week 2  2026-01-21
+#>  3 Week 3  2026-01-28
+#>  4 Week 4  2026-02-04
+#>  5 Week 5  2026-02-11
+#>  6 Week 6  2026-02-18
+#>  7 Week 7  2026-02-25
+#>  8 Week 8  2026-03-04
+#>  9 MSB     2026-03-11
+#> 10 MSB     2026-03-18
+#> 11 Week 9  2026-03-25
+#> 12 Week 10 2026-04-01
+#> 13 Week 11 2026-04-08
+#> 14 Week 12 2026-04-15
+```
+
+This gives a week for each row, with the date. Not that we can add a
+two-week MSB.
+
+Finally to get the calendar for a whole semester, we run
+
+``` r
+create_cal(sem)
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-01-14
+#> DTEND;VALUE=DATE:2026-01-15
+#> SUMMARY:Week 1
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-01-21
+#> DTEND;VALUE=DATE:2026-01-22
+#> SUMMARY:Week 2
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-01-28
+#> DTEND;VALUE=DATE:2026-01-29
+#> SUMMARY:Week 3
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-02-04
+#> DTEND;VALUE=DATE:2026-02-05
+#> SUMMARY:Week 4
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-02-11
+#> DTEND;VALUE=DATE:2026-02-12
+#> SUMMARY:Week 5
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-02-18
+#> DTEND;VALUE=DATE:2026-02-19
+#> SUMMARY:Week 6
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-02-25
+#> DTEND;VALUE=DATE:2026-02-26
+#> SUMMARY:Week 7
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-03-04
+#> DTEND;VALUE=DATE:2026-03-05
+#> SUMMARY:Week 8
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-03-11
+#> DTEND;VALUE=DATE:2026-03-12
+#> SUMMARY:MSB
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-03-18
+#> DTEND;VALUE=DATE:2026-03-19
+#> SUMMARY:MSB
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-03-25
+#> DTEND;VALUE=DATE:2026-03-26
+#> SUMMARY:Week 9
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-04-01
+#> DTEND;VALUE=DATE:2026-04-02
+#> SUMMARY:Week 10
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-04-08
+#> DTEND;VALUE=DATE:2026-04-09
+#> SUMMARY:Week 11
+#> END:VEVENT
+#> END:VCALENDAR
+#> BEGIN:VCALENDAR
+#> BEGIN:VEVENT
+#> DTSTART;VALUE=DATE:2026-04-15
+#> DTEND;VALUE=DATE:2026-04-16
+#> SUMMARY:Week 12
+#> END:VEVENT
+#> END:VCALENDAR
+```

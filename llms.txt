@@ -1,0 +1,132 @@
+# helpeR
+
+The goal of helpeR is to store the regular functions that I use.
+
+## Installation
+
+You can install the development version of helpeR like so:
+
+``` r
+ remotes::install_github("jonotuke/helpeR")
+```
+
+## Adding a function
+
+1.  Use
+
+``` r
+use_r("new_function")
+```
+
+to add function.  
+2. Add in code and driver run until working.  
+3. Add Roxygen.  
+4. Run
+
+``` r
+document()
+```
+
+to update document.  
+5. Run
+
+``` r
+check()
+```
+
+to check package is fine.  
+6. Run
+
+``` r
+build()
+```
+
+to install.
+
+If using dplyr, you may get a `no visible binding` error. Add this to
+file
+
+``` r
+utils::globalVariables(
+  c("missing var")
+)
+```
+
+## Adding instructions
+
+All of the instructions are in the vignettes.
+
+## Adding raw-data
+
+Set up with
+
+``` r
+usethis::use_data_raw("grading-data")
+```
+
+## Adding extra files
+
+These all go into `inst`, so we create this
+
+``` r
+fs::dir_create("inst")
+```
+
+We can then get files with
+
+``` r
+fs::path_package("helpeR", "inst", "grading", "sc2024-gradebook.csv")
+```
+
+## Adding site
+
+To get the site, run
+
+``` r
+devtools::build_readme()
+pkgdown::build_site()
+```
+
+## Adding a vignette
+
+First we create the file with
+
+``` r
+use_vignette("grading", title = "Functions to finalise marks")
+```
+
+Add notes and compile.
+
+# Package index
+
+## All functions
+
+- [`clean_gradebook()`](https://jonotuke.github.io/helpeR/reference/clean_gradebook.md)
+  : Clean gradebook
+- [`create_cal()`](https://jonotuke.github.io/helpeR/reference/create_cal.md)
+  : create cal
+- [`create_event()`](https://jonotuke.github.io/helpeR/reference/create_event.md)
+  : create event
+- [`create_semester()`](https://jonotuke.github.io/helpeR/reference/create_semester.md)
+  : create semester
+- [`fill_grade_roster()`](https://jonotuke.github.io/helpeR/reference/fill_grade_roster.md)
+  : fill grade roster
+- [`get_grade()`](https://jonotuke.github.io/helpeR/reference/get_grade.md)
+  : Get grades
+- [`gradebook`](https://jonotuke.github.io/helpeR/reference/gradebook.md)
+  : Example gradebook
+- [`sim_gradebook()`](https://jonotuke.github.io/helpeR/reference/sim_gradebook.md)
+  : Sime gradebook
+- [`sim_id()`](https://jonotuke.github.io/helpeR/reference/sim_id.md) :
+  Generate a student ID
+- [`sim_ids()`](https://jonotuke.github.io/helpeR/reference/sim_ids.md)
+  : Simulate multiple IDs
+
+# Articles
+
+### All vignettes
+
+- [Functions to finalise
+  marks](https://jonotuke.github.io/helpeR/articles/grading.md):
+- [Creating ICS
+  files](https://jonotuke.github.io/helpeR/articles/ics-code.md):
