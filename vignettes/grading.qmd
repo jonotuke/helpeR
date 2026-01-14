@@ -1,0 +1,73 @@
+---
+title: "Functions to finalise marks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Functions to finalise marks}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(helpeR)
+library(dplyr)
+```
+
+# Cleaning the gradebook
+
+1. Read in gradebook
+```{r}
+data(gradebook)
+```
+
+```{r}
+gradebook <- clean_gradebook(gradebook, A1:A3)
+gradebook
+```
+
+# Adding grade
+```{r}
+gradebook <- gradebook |>
+  rowwise() |>
+  mutate(
+    total = sum(c_across(A1:A3)) / 300 * 100
+  ) |>
+  mutate(grade = get_grade(total))
+```
+
+# Filling grade-roster
+
+You can use the empty grade-roster and final totals to fill grade book
+
+An example dataset is given in
+
+```{r}
+example_gradebook_file <- fs::path_package(
+  "helpeR",
+  "extdata/stats-1234-gradebook.xlsx"
+)
+example_gradebook <- readxl::read_excel(example_gradebook_file)
+example_gradebook
+```
+
+The corresponding graderoster is 
+```{r}
+graderoster_file <- fs::path_package(
+  "helpeR",
+  "extdata/stats-1234-graderoster.xlsx"
+)
+```
+
+```{r, eval=FALSE}
+fill_grade_roster(gradebook, graderoster_file)
+```
+
+

@@ -1,0 +1,50 @@
+---
+title: "Creating ICS files"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Creating ICS files}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(helpeR)
+```
+
+These functions are used to create ICS files so can add weeks of semester to calendar. 
+
+The first is 
+
+```{r, message=FALSE}
+library(lubridate)
+create_event(name = "Test", today())
+```
+
+This creates an all day event with the given name. If you want to export this, then you use
+
+```{r, eval=FALSE}
+create_event(name = "Test", today(), file = "test.ics")
+```
+
+Next, we can create a tibble of dates and weeks for a semester. 
+
+```{r}
+sem <- create_semester(today(), weeks = 12, MSB = 8)
+sem
+```
+
+This gives a week for each row, with the date. Not that we can add a two-week MSB. 
+
+Finally to get the calendar for a whole semester, we run
+
+```{r}
+create_cal(sem)
+```
+

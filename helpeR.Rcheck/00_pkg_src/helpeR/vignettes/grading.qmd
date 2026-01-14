@@ -1,0 +1,53 @@
+---
+title: "Functions to finalise marks"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Functions to finalise marks}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(helpeR)
+library(dplyr)
+```
+
+# Cleaning the gradebook
+1. Download the CSV. 
+```{r, eval=FALSE}
+csv <- "example-gradebook.csv"
+```
+2. Run 
+```{r, eval=FALSE}
+gradebook <- clean_gradebook(csv)
+gradebook
+```
+
+# Adding grade
+```{r}
+data("gradebook")
+gradebook |> 
+  mutate(
+    grade = get_grade(myuni_total)
+  ) |> 
+  select(myuni_total, grade) |> 
+  arrange(myuni_total)
+```
+
+# Filling grade-roster
+
+You can use the empty grade-roster and final totals to fill grade book
+```{r, eval=FALSE}
+fill_grade_roster(gradebook, "grade-roster.xlsx")
+```
+
+

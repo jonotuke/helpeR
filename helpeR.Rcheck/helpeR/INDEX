@@ -1,0 +1,7 @@
+clean_gradebook         clean gradebook
+create_cal              create cal
+create_event            create event
+create_semester         create semester
+fill_grade_roster       fill grade roster
+get_grade               Get grades
+gradebook               Example gradebook

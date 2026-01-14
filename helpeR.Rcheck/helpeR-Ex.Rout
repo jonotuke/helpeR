@@ -1,0 +1,182 @@
+
+R version 4.4.0 (2024-04-24) -- "Puppy Cup"
+Copyright (C) 2024 The R Foundation for Statistical Computing
+Platform: aarch64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "helpeR"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('helpeR')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("create_cal")
+> ### * create_cal
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: create_cal
+> ### Title: create cal
+> ### Aliases: create_cal
+> 
+> ### ** Examples
+> 
+> df <- create_semester(lubridate::today(), weeks = 8, MSB = 4)
+> create_cal(df)
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-07-14
+DTEND;VALUE=DATE:2024-07-15
+SUMMARY:Week 1
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-07-21
+DTEND;VALUE=DATE:2024-07-22
+SUMMARY:Week 2
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-07-28
+DTEND;VALUE=DATE:2024-07-29
+SUMMARY:Week 3
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-08-04
+DTEND;VALUE=DATE:2024-08-05
+SUMMARY:Week 4
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-08-11
+DTEND;VALUE=DATE:2024-08-12
+SUMMARY:MSB
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-08-18
+DTEND;VALUE=DATE:2024-08-19
+SUMMARY:MSB
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-08-25
+DTEND;VALUE=DATE:2024-08-26
+SUMMARY:Week 5
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-09-01
+DTEND;VALUE=DATE:2024-09-02
+SUMMARY:Week 6
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-09-08
+DTEND;VALUE=DATE:2024-09-09
+SUMMARY:Week 7
+END:VEVENT
+END:VCALENDAR
+BEGIN:VCALENDAR
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-09-15
+DTEND;VALUE=DATE:2024-09-16
+SUMMARY:Week 8
+END:VEVENT
+END:VCALENDAR
+> 
+> 
+> 
+> cleanEx()
+> nameEx("create_event")
+> ### * create_event
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: create_event
+> ### Title: create event
+> ### Aliases: create_event
+> 
+> ### ** Examples
+> 
+> create_event("TEST", lubridate::today())
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:2024-07-14
+DTEND;VALUE=DATE:2024-07-15
+SUMMARY:TEST
+END:VEVENT
+> 
+> 
+> 
+> cleanEx()
+> nameEx("create_semester")
+> ### * create_semester
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: create_semester
+> ### Title: create semester
+> ### Aliases: create_semester
+> 
+> ### ** Examples
+> 
+> create_semester(lubridate::today(), weeks = 12, MSB = 8)
+# A tibble: 14 × 2
+   name    date      
+   <chr>   <date>    
+ 1 Week 1  2024-07-14
+ 2 Week 2  2024-07-21
+ 3 Week 3  2024-07-28
+ 4 Week 4  2024-08-04
+ 5 Week 5  2024-08-11
+ 6 Week 6  2024-08-18
+ 7 Week 7  2024-08-25
+ 8 Week 8  2024-09-01
+ 9 MSB     2024-09-08
+10 MSB     2024-09-15
+11 Week 9  2024-09-22
+12 Week 10 2024-09-29
+13 Week 11 2024-10-06
+14 Week 12 2024-10-13
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.33 0.022 0.356 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

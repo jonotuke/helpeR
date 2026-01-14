@@ -1,0 +1,24 @@
+Package: helpeR
+Title: Various functions for me to use
+Version: 0.0.0.9000
+Authors@R: 
+    person("Jono", "Tuke", , "jonotuke@gmail.com", 
+    role = c("aut", "cre"))
+Description: Lots of functions to help me. 
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: dplyr, fs, janitor, lubridate, purrr, readr, readxl, stringr,
+        tibble, tidyr, tidyselect, writexl
+URL: https://github.com/jonotuke/helpeR
+BugReports: https://github.com/jonotuke/helpeR/issues
+Suggests: knitr, rmarkdown, testthat (>= 3.0.0), quarto
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Depends: R (>= 2.10)
+LazyData: true
+NeedsCompilation: no
+Packaged: 2024-07-14 05:00:34 UTC; jonathantuke
+Author: Jono Tuke [aut, cre]
+Maintainer: Jono Tuke <jonotuke@gmail.com>
